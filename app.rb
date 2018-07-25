@@ -3,23 +3,32 @@ require './environment'
 module FormsLab
   class App < Sinatra::Base
 
-    get "/" do
-      erb :root
+    #STATIC URLS
+
+    get '/pirates' do
+      @pirates = Pirate.all
+      erb :'pirates/index'
     end
 
-    get '/new' do
+    get '/pirates/new' do
       erb :'pirates/new'
-      #File.read('./views/pirates/new.erb')
     end
 
     post '/pirates' do
+      binding.pry
       @pirate = Pirate.new(params[:pirate])
+      @ships = Ship.new(params[:pirate][:ships])
+      erb :'pirates/show'
+    end
 
-      params[:pirate][:ships].each do |details|
-        Ship.new(details)
-      end
-      @ships = Ship.all
+    get 'pirates/show' do
+      erb :'/pirates/show'
+    end
 
+    #DYNAMIC URLS
+
+    get '/pirates/:id' do
+      @pirate = Pirate.find(params[:id])
       erb :'pirates/show'
     end
   end
