@@ -24,7 +24,7 @@ module FormsLab
       end
       @ships = Ship.all
 
-      erb :'pirates/show'
+      redirect to "pirates/#{pirate.id}"
     end
 
     get 'pirates/show' do
