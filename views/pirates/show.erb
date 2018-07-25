@@ -4,3 +4,12 @@
     <h3>Height: <%=@pirate.height%></h3>
     <h3>Weight: <%=@pirate.weight%></h3>
   </div>
+
+  <div class="ship">
+    <ul>
+    <% @pirate.ships.each_with_index do |ship, i| %>
+    <h2>Ship <%= "#{i}"%>: <%=ship.name%></h2>
+    <h3>Cateogry: <%=ship.category%></h3>
+    <h3>Booty: <%=ship.booty%></h3>
+    <%end%>
+  </ul>
