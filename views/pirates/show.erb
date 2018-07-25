@@ -8,7 +8,8 @@
   <div class="ship">
     <ul>
     <% @pirate.ships.each_with_index do |ship, i| %>
-    <h2>Ship <%= "#{i}"%>: <%=ship.name%></h2>
+    <h2>Ship<%= "#{i + 1}"%>:</h2>
+    <h3>Name: <%=ship.name%></h3>
     <h3>Cateogry: <%=ship.category%></h3>
     <h3>Booty: <%=ship.booty%></h3>
     <%end%>
